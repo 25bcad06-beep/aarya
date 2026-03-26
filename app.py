@@ -35,9 +35,8 @@ def init_db():
     conn.close()
 
 
-# ✅ Run DB init safely (only when app starts serving)
-@app.before_first_request
-def setup():
+# ✅ Initialize DB at startup (Flask 3 compatible)
+with app.app_context():
     init_db()
 
 
